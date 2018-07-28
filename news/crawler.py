@@ -1,6 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 from news.models import NewsPost
+from django.core.management import setup_environ
+import NBA-News-Web.settings
+import os
+
+setup_environ(NBA-News-Web.settings)
+os.environ['DJANGO_SETTING_MODULE'] = 'NBA-News-Web.settings'
 
 base_url = "https://nba.udn.com/"
 home_url = base_url + "nba/index?gr=www"
