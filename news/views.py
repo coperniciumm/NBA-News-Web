@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from news.models import NewsPost
 from news.serializer import NewsPostSerializer
+from rest_framework import viewsets
 #from rest_framework.response import Response
 #from rest_framework import status
 from django.http import HttpResponse, JsonResponse
