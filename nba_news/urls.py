@@ -16,10 +16,15 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from news.views import index, post
+from rest_framework import routers
+from news import views
+
+router = routers.DefaultRouter()
+router.register(r'news', views.NewsViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^index/$', index),
     url(r'^post/$', post),
+    url(r'^api/', include(router.urls))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
