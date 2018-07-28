@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from news.models import NewsPost
+from models import NewsPost
 
 base_url = "https://nba.udn.com/"
 home_url = base_url + "nba/index?gr=www"
