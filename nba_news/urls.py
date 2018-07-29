@@ -22,7 +22,7 @@ from news.views import _list
 urlpatterns = [
     url(r'^index/$', views.index),
     url(r'^post/$', views.post),
-    url(r'^test/$', views._list),
+    url(r'^article/$', views._list, name='article'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -56,29 +56,19 @@
 				<div class="row">
 					<!-- Main Column -->
 					<div class="col-md-12">
-
-						<!-- section title -->
-						<div class="section-title">
-							<h2 class="title">NEWS</h2>
-						</div>
-						<!-- /section title -->
 						
 						<!-- ARTICLE -->
 						<article class="article row-article">
 							<div class="article-img">
 								<a href="#">
-									<img src="{% static './img/img-md-1.jpg' %}" alt="">
+									<img src="" alt="">
 								</a>
 							</div>
 							<div class="article-body">
 								<ul class="article-info">
 									<li class="article-category"><a href="#">News</a></li>
 								</ul>
-								<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-								<ul class="article-meta">
-									<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-								</ul>
-								<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
+								<h3 class="article-title"><a href="#">Title</a></h3>
 							</div>
 						</article>
 						<!-- /ARTICLE -->					
@@ -91,7 +81,6 @@
 			<!-- /CONTAINER -->
 		</div>
 		<!-- /SECTION -->						
-
 		
 		<!-- FOOTER -->
 		<footer id="footer">
@@ -142,4 +131,42 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="{% static 'js/main.js' %}"></script>
 
 	</body>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			url: './article/',
+			type: 'POST',
+			dataType: 'json',
+			timeout: 10000,
+
+			success: function(result) {
+				for(var i = 0; i < 4; i++){
+					title = result[i].title;
+					photo_url = result[i].photo_url;
+					if(i == 0){
+						$("#article-title").html("<div>"+title+"</div>");
+						$("#img").attr("src", photo_url);
+					}
+					var add_block = $(".col-md-12").text('\
+						<article class="article row-article">\
+							<div class="article-img">\
+								<a href="#">\
+									<img src="') + photo_url + ('" alt="">\
+								</a>\
+							</div>\
+							<div class="article-body">\
+								<ul class="article-info">\
+									<li class="article-category"><a href="#">News</a></li>\
+								</ul>\
+								<h3 class="article-title"><a href="#">') + title + ('</a></h3>\
+							</div>\
+						</article>\
+					')
+				$(".row-article").after(add_block);
+				}
+			}
+		})
+
+	</script>
+
 </html>
