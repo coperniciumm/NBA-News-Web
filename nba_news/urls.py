@@ -16,15 +16,13 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework.routers import DefaultRouter
+from rest_framework.urlpatterns import format_suffix_patterns
 from news import views
-
-router = routers.DefaultRouter()
-router.register(r'news', views.NewsViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^index/$', index),
-    #url(r'^post/$', post),
-    url(r'^api/', include(router.urls))
+    url(r'^index/$', views.index),
+    url(r'^post/$', views.post),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns = format_suffix_patterns(urlpatterns)
