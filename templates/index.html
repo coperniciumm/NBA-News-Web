@@ -12,9 +12,6 @@
 
 		<script src="{% static 'js/jquery.min.js' %}"></script>
 
-		<!-- Google font -->
-		<link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CLato:300,400' %}" rel="stylesheet"> 
-		
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
 		
@@ -55,33 +52,7 @@
 				<!-- ROW -->
 				<div class="row">
 					<!-- Main Column -->
-					<div class="col-md-12">
-
-						<!-- section title -->
-						<div class="section-title">
-							<h2 class="title">NEWS</h2>
-						</div>
-						<!-- /section title -->
-						
-						<!-- ARTICLE -->
-						<article class="article row-article">
-							<div class="article-img">
-								<a href="#">
-									<img src="{% static './img/img-md-1.jpg' %}" alt="">
-								</a>
-							</div>
-							<div class="article-body">
-								<ul class="article-info">
-									<li class="article-category"><a href="#">News</a></li>
-								</ul>
-								<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-								<ul class="article-meta">
-									<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-								</ul>
-								<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
-							</div>
-						</article>
-						<!-- /ARTICLE -->					
+					<div class="col-md-12">				
 						
 					</div>
 					<!-- /Main Column -->
@@ -91,7 +62,6 @@
 			<!-- /CONTAINER -->
 		</div>
 		<!-- /SECTION -->						
-
 		
 		<!-- FOOTER -->
 		<footer id="footer">
@@ -138,8 +108,40 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<!-- jQuery Plugins -->
 		<script src="{% static 'js/jquery.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		<script src="{% static 'js/owl.carousel.min.js' %}"></script>
 		<script src="{% static 'js/main.js' %}"></script>
 
 	</body>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajax({
+				url: 'http://35.200.130.57:8000/article/',
+				type: 'POST',
+				dataType: 'json',
+				timeout: 10000,
+
+				success: function(result) {
+					for(var i = 0; i < 4; i++){
+						$(".col-md-12").append('\
+							<article class="article row-article">\
+								<div class="article-img">\
+									<a href="#">\
+										<img src="' + result[i].photo_url + '" alt="">\
+									</a>\
+								</div>\
+								<div class="article-body">\
+									<ul class="article-info">\
+										<li class="article-category"><a href="#">News</a></li>\
+									</ul>\
+									<h3 class="article-title"><a href="'+ "http://35.200.130.57:8000/post/" + result[i].id + '">' + result[i].title + '</a></h3>\
+								</div>\
+							</article>\
+						');
+					}
+				}
+			});
+		});
+
+	</script>
+
 </html>

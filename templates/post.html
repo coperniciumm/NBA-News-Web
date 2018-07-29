@@ -57,18 +57,18 @@
 					<!-- ARTICLE POST -->
 					<article class="article article-post">
 						<div class="article-main-img">
-							<img src="{% static './img/img-post.jpg' %}" alt="">
+							<img src="{{ post.photo_url }}" alt="">
 						</div>
 						<div class="article-body">
 							<ul class="article-info">
 								<li class="article-category"><a href="#">News</a></li>
 								<li class="article-type"><i class="fa fa-file-text"></i></li>
 							</ul>
-							<h1 class="article-title">Duis urbanitas eam in, tempor consequat.</h1>
-							<ul class="article-meta">
-								<li><i class="fa fa-clock-o"></i> April 04, 2017</li>
-							</ul>
-							<p>Content Content Content Content Content </p>
+							<h1 class="article-title">{{ post.title }}</h1>
+							<p>{{ post.para1 }} </p>
+							<p>{{ post.para2 }} </p>
+							<p>{{ post.para3 }} </p>
+							<p>{{ post.para4 }} </p>
 						</div>
 					</article>
 					<!-- /ARTICLE POST -->				

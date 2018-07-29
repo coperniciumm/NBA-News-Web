@@ -13,13 +13,16 @@ Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
-from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from news.views import index, post
+from rest_framework.urlpatterns import format_suffix_patterns
+from news import views
+from news.views import _list, index, post
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^index/$', index),
-    url(r'^post/$', post),
+    url(r'^index/$', views.index),
+    url(r'^post/(?P<pk>\d+)', views.post, name='post'),
+    url(r'^article/$', views._list, name='article'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns = format_suffix_patterns(urlpatterns)
