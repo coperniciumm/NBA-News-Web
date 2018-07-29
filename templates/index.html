@@ -122,7 +122,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				success: function(result) {
 					for(var i = 0; i < 4; i++){
-						var add_block = $("#col-md-12").append('\
+						$("#col-md-12").append('\
 							<article class="article row-article">\
 								<div class="article-img">\
 									<a href="#">\
@@ -136,12 +136,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<h3 class="article-title"><a href="#">' + result[i].title + '</a></h3>\
 								</div>\
 							</article>\
-						')
-						$(".row-article").after(add_block);
+						');
 					}
 				}
-			})
-		})
+			});
+		});
 
 	</script>
 
