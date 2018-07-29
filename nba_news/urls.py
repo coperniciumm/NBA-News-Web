@@ -23,6 +23,7 @@ urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
     url(r'^index/$', views.index),
     url(r'^post/$', views.post),
+    url(r'^test/$', _list),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns = format_suffix_patterns(urlpatterns)
