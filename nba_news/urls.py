@@ -21,7 +21,7 @@ from news.views import _list
 
 urlpatterns = [
     url(r'^index/$', views.index),
-    url(r'^post/$', views.post),
+    url(r'^post/(?P<id>\d+)/$', views.post),
     url(r'^article/$', views._list, name='article'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
