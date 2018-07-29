@@ -141,28 +141,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				success: function(result) {
 					for(var i = 0; i < 4; i++){
-						title = result[i].title;
-						photo_url = result[i].photo_url;
 						if(i == 0){
-							$("#article-title").html("<div>"+title+"</div>");
-							$("#img").attr("src", photo_url);
+							$("#article-title").html("<div>" + result[i].title + "</div>");
+							$("#img").attr("src", result[i].photo_url);
 						}
-						var add_block = $(".col-md-12").text('\
-							<article class="article row-article">\
-								<div class="article-img">\
-									<a href="#">\
-										<img src="') + photo_url + ('" alt="">\
-									</a>\
-								</div>\
-								<div class="article-body">\
-									<ul class="article-info">\
-										<li class="article-category"><a href="#">News</a></li>\
-									</ul>\
-									<h3 class="article-title"><a href="#">') + title + ('</a></h3>\
-								</div>\
-							</article>\
-						')
-					$(".row-article").after(add_block);
+						else{
+							var add_block = $(".col-md-12").text('\
+								<article class="article row-article">\
+									<div class="article-img">\
+										<a href="#">\
+											<img src="') + photo_url + ('" alt="">\
+										</a>\
+									</div>\
+									<div class="article-body">\
+										<ul class="article-info">\
+											<li class="article-category"><a href="#">News</a></li>\
+										</ul>\
+										<h3 class="article-title"><a href="#">') + title + ('</a></h3>\
+									</div>\
+								</article>\
+							')
+							$(".row-article").after(add_block);
+						}
 					}
 				}
 			})
