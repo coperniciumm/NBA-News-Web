@@ -17,11 +17,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.urlpatterns import format_suffix_patterns
 from news import views
-from news.views import _list
+from news.views import _list, index, post
 
 urlpatterns = [
     url(r'^index/$', views.index),
-    url(r'^post/(?P<id>\d+)/$', views.post),
+    url(r'^post/(?P<pk>\d+)/$', views.post, name='post'),
     url(r'^article/$', views._list, name='article'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

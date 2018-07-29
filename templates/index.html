@@ -122,7 +122,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				success: function(result) {
 					for(var i = 0; i < 4; i++){
-						story_page = "http://35.200.130.57:8000/post/" + i
 						$(".col-md-12").append('\
 							<article class="article row-article">\
 								<div class="article-img">\
@@ -134,7 +133,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<ul class="article-info">\
 										<li class="article-category"><a href="#">News</a></li>\
 									</ul>\
-									<h3 class="article-title"><a href=' + story_page + '>' + result[i].title + '</a></h3>\
+									<h3 class="article-title"><a href="{% url 'post' pk=NewsPost.pk %}">' + result[i].title + '</a></h3>\
 								</div>\
 							</article>\
 						');

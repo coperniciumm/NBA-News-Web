@@ -20,6 +20,7 @@ def _list(request):
 def index(request):
     return render(request, 'index.html')
 
-def post(request):
-    return render(request, 'post.html')
+def post(request, pk):
+    post = NewsPost.objects.get(pk=pk)
+    return render(request, 'post.html', {'post':post})
 
