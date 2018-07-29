@@ -52,23 +52,7 @@
 				<!-- ROW -->
 				<div class="row">
 					<!-- Main Column -->
-					<div class="col-md-12">
-						
-						<!-- ARTICLE -->
-						<article class="article row-article">
-							<div class="article-img">
-								<a href="#">
-									<img src="" alt="">
-								</a>
-							</div>
-							<div class="article-body">
-								<ul class="article-info">
-									<li class="article-category"><a href="#">News</a></li>
-								</ul>
-								<h3 class="article-title"><a href="#">Title</a></h3>
-							</div>
-						</article>
-						<!-- /ARTICLE -->					
+					<div class="col-md-12">				
 						
 					</div>
 					<!-- /Main Column -->
@@ -138,28 +122,22 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 				success: function(result) {
 					for(var i = 0; i < 4; i++){
-						if(i == 0){
-							$("#article-title").html("<div>" + result[i].title + "</div>");
-							$("img").attr("src", result[i].photo_url);
-						}
-						else{
-							var add_block = $("#col-md-12").append('\
-								<article class="article row-article">\
-									<div class="article-img">\
-										<a href="#">\
-											<img src="' + result[i].photo_url + '" alt="">\
-										</a>\
-									</div>\
-									<div class="article-body">\
-										<ul class="article-info">\
-											<li class="article-category"><a href="#">News</a></li>\
-										</ul>\
-										<h3 class="article-title"><a href="#">' + result[i].title + '</a></h3>\
-									</div>\
-								</article>\
-							')
-							$(".row-article").after(add_block);
-						}
+						var add_block = $("#col-md-12").append('\
+							<article class="article row-article">\
+								<div class="article-img">\
+									<a href="#">\
+										<img src="' + result[i].photo_url + '" alt="">\
+									</a>\
+								</div>\
+								<div class="article-body">\
+									<ul class="article-info">\
+										<li class="article-category"><a href="#">News</a></li>\
+									</ul>\
+									<h3 class="article-title"><a href="#">' + result[i].title + '</a></h3>\
+								</div>\
+							</article>\
+						')
+						$(".row-article").after(add_block);
 					}
 				}
 			})
