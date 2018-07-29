@@ -4,13 +4,8 @@ from django.shortcuts import render
 from news.models import NewsPost
 from news.serializer import NewsPostSerializer
 from rest_framework import viewsets
-#from rest_framework.response import Response
-#from rest_framework import status
 from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
-#from django.views.decorators.csrf import csrf_exempt
-#from rest_framework.renderers import JSONRenderer
-#from rest_framework.parsers import JSONParser
 
 @api_view(['GET'])
 def _list(request):
