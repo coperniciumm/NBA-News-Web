@@ -3,7 +3,7 @@ from news.models import NewsPost
 
 
 class NewsPostSerializer(serializers.ModelSerializer):
-    id = serializers.UUIDField()
+    #id = serializers.UUIDField()
     
     class Meta:
         model = NewsPost
