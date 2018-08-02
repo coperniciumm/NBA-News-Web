@@ -11,7 +11,5 @@ class NewsPost(models.Model):
     para3 = models.TextField(blank=True)
     para4 = models.TextField(blank=True)
 
-    def __unicode__(self):
-        return self.name
     class Meta:
         db_table = "newspost"
